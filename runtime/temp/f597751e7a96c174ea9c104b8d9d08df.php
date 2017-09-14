@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:89:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\delcategorylist.html";i:1505395324;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505302890;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:89:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\delcategorylist.html";i:1505395700;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505395700;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>

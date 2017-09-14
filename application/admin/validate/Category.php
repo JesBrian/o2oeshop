@@ -26,12 +26,8 @@ class Category extends Validate
     ];
 
     protected $scene = [
-<<<<<<< HEAD
         'add'       =>  ['name','parent_id'],
         'update'    =>  ['id','name','parent_id'],
         'status'    =>  ['id','status'],
-=======
-        'add'  =>  ['name','parent_id'],
->>>>>>> origin/master
     ];
 }
