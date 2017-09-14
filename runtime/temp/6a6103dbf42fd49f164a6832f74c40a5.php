@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\index\index.html";i:1505218123;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505302890;s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\menu.html";i:1505394095;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+=======
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\index\index.html";i:1505218123;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1484376710;s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\menu.html";i:1505220947;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+>>>>>>> origin/master
 ﻿<!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -31,9 +35,12 @@
 <meta name="description" content="o2o平台">
 </head>
 
+<<<<<<< HEAD
 
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
 
+=======
+>>>>>>> origin/master
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
         <div class="container-fluid cl"><a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a>
@@ -100,7 +107,10 @@
 			<dd>
 				<ul>
 					<li><a data-href="<?php echo url('category/index'); ?>" data-title="生活服务分类" href="javascript:void(0)">生活服务分类</a></li>
+<<<<<<< HEAD
 					<li><a data-href="<?php echo url('category/delCategoryList'); ?>" data-title="被删除的分类" href="javascript:void(0)">被删除的分类</a></li>
+=======
+>>>>>>> origin/master
 				</ul>
 			</dd>
 		</dl>

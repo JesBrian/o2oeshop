@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\add.html";i:1505304658;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505302890;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+=======
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\add.html";i:1505221454;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1484376710;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+>>>>>>> origin/master
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -30,9 +34,12 @@
 <meta name="keywords" content="tp5打造o2o平台系统">
 <meta name="description" content="o2o平台">
 </head>
+<<<<<<< HEAD
 
 
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
+=======
+>>>>>>> origin/master
 <div class="page-container">
     <form class="form form-horizontal form-o2o-add" id="form-o2o-add" method="post" action="<?php echo url('category/save'); ?>">
         <div class="row cl">
@@ -46,10 +53,17 @@
             <div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 				<select name="parent_id" class="select">
+<<<<<<< HEAD
                     <option value="0">一级分类</option>
                     <?php foreach($normalFirstCategory as $vo): ?>
 					<option value="<?php echo $vo['id']; ?>"> -- <?php echo $vo['name']; ?></option>
 					<?php endforeach; ?>
+=======
+					<option value="0">一级分类</option>
+					
+					<option value="">--</option>
+					
+>>>>>>> origin/master
 				</select>
 				</span>
             </div>

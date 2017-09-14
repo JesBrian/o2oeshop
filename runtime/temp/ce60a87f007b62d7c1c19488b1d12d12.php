@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\index.html";i:1505394939;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505302890;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+=======
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\index.html";i:1505219240;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1484376710;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+>>>>>>> origin/master
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -30,9 +34,12 @@
 <meta name="keywords" content="tp5打造o2o平台系统">
 <meta name="description" content="o2o平台">
 </head>
+<<<<<<< HEAD
 
 
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
+=======
+>>>>>>> origin/master
 <body>
 <nav class="breadcrumb">
     <i class="Hui-iconfont">&#xe67f;</i> 首页
@@ -54,7 +61,11 @@
             <tr class="text-c">
                 <th width="40"><input name="" type="checkbox" value=""></th>
                 <th width="80">ID</th>
+<<<<<<< HEAD
                 <th width="100">分类名称</th>
+=======
+                <th width="100">分类</th>
+>>>>>>> origin/master
                 <th width="30">排序序号</th>
                 <th width="150">新增时间</th>
                 <th width="60">发布状态</th>
@@ -62,6 +73,7 @@
             </tr>
             </thead>
             <tbody>
+<<<<<<< HEAD
             <?php foreach($categoryData as $vo): ?>
             <tr class="text-c">
                 <td><input name="" type="checkbox" value=""></td>
@@ -89,6 +101,28 @@
 </script>
 
 <!--包含脚部文件-->
+=======
+
+            <tr class="text-c">
+                <td><input name="" type="checkbox" value=""></td>
+                <td></td>
+                <td></td>
+                <td class="text-c"></td>
+                <td></td>
+                <td class="td-status"><a href="" title="点击修改状态"></a></td>
+                <td class="td-manage"><a href="">获取子栏目</a><a style="text-decoration:none" class="ml-5"
+                                                             onClick="o2o_s_edit('编辑','','',300)" href="javascript:;"
+                                                             title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a
+                        style="text-decoration:none" class="ml-5" onClick="o2o_del('','')" href="javascript:;"
+                        title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--包含头部文件-->
+>>>>>>> origin/master
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/layer/2.1/layer.js"></script> 
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/My97DatePicker/WdatePicker.js"></script> 
