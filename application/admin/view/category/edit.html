@@ -1,11 +1,11 @@
 <!--包含头部文件-->
 {include file="public/header" /}
 <div class="page-container">
-    <form class="form form-horizontal form-o2o-add" id="form-o2o-add" method="post" action="{:url('category/save')}">
+    <form class="form form-horizontal form-o2o-add" id="form-o2o-add" method="post" action="{:url('category/updateData')}">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生活服务分类名称：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="name" name="name">
+                <input type="text" class="input-text" value="{$categoryData.name}" placeholder="" id="name" name="name">
             </div>
         </div>
         <div class="row cl">
@@ -15,7 +15,7 @@
 				<select name="parent_id" class="select">
                     <option value="0">一级分类</option>
                     {foreach $normalFirstCategory as $vo}
-					<option value="{$vo.id}"> -- {$vo.name}</option>
+					<option value="{$vo.id}" {if condition="$vo.id == $categoryData.parent_id"}selected{/if}> -- {$vo.name}</option>
 					{/foreach}
 				</select>
 				</span>
@@ -31,6 +31,8 @@
                 </button>
             </div>
         </div>
+
+        <input type="hidden" name="id" value="{$categoryData.id}">
     </form>
 </div>
 <!--包含头部文件-->
