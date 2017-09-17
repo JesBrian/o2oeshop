@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\index.html";i:1505395700;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505395700;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\index.html";i:1505647871;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505395700;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -78,7 +78,7 @@
             <?php endforeach; ?>
             </tbody>
         </table>
-        <div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o"><?php echo $categoryData->render(); ?></div>
+        <?php echo pagination($categoryData); ?>
     </div>
 </div>
 

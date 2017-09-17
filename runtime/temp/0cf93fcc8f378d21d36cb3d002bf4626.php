@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:84:"E:\PHP-Project\MyProject\o2oeshop\public/../application/admin\view\category\add.html";i:1505219347;s:85:"E:\PHP-Project\MyProject\o2oeshop\public/../application/admin\view\public\header.html";i:1484376710;s:85:"E:\PHP-Project\MyProject\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\login\index.html";i:1505479515;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\header.html";i:1505568789;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\footer.html";i:1505568844;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/css/style.css" />
   <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="__STATIC__/admin/uploadify/uploadify.css" />
 <!--[if IE 6]>
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -30,40 +31,41 @@
 <meta name="keywords" content="tp5打造o2o平台系统">
 <meta name="description" content="o2o平台">
 </head>
-<div class="page-container">
-    <form class="form form-horizontal form-o2o-add" id="form-o2o-add" method="post" action="">
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生活服务分类名称：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="name" name="name">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="parent_id" class="select">
-					<option value="0">一级分类</option>
-					
-					<option value="">--</option>
-					
-				</select>
-				</span>
-            </div>
-        </div>
+<input type="hidden" id="TenantId" name="TenantId" value="" />
+<div class="header"><h1 style="text-align:center">商户登录系统</h1></div>
+<div class="loginWraper">
 
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button type="submit" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+  <div id="loginform" class="loginBox">
 
-                <button onClick="layer_close();" class="btn btn-default radius" type="button">
-                    &nbsp;&nbsp;取消&nbsp;&nbsp;
-                </button>
-            </div>
+    <form class="form form-horizontal" action="" method="post">
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+        <div class="formControls col-xs-8">
+          <input id="" name="username" type="text" placeholder="账户" class="input-text size-L">
         </div>
+      </div>
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+        <div class="formControls col-xs-8">
+          <input id="" name="password" type="password" placeholder="密码" class="input-text size-L">
+        </div>
+      </div>
+      
+      
+      <div class="row cl">
+
+        <div class="formControls col-xs-8 col-xs-offset-3">
+
+          <input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+          <a href="<?php echo url('register/index'); ?>"><input name="" type="" class="btn btn-success radius size-L" value="&nbsp;申请&nbsp;&nbsp;&nbsp;&nbsp;入驻&nbsp;"></a>
+        </div>
+      </div>
     </form>
+  </div>
 </div>
-<!--包含头部文件-->
+<div class="footer">Copyright tp5打造本地生活服务系统</div>
+<!--包含尾部文件-->
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/layer/2.1/layer.js"></script> 
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/My97DatePicker/WdatePicker.js"></script> 
@@ -73,4 +75,6 @@
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui/js/H-ui.js"></script> 
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui.admin/js/H-ui.admin.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/image.js"></script>
 

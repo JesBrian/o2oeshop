@@ -1,0 +1,19 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<div class="cl pd-5 bg-1 bk-gray mt-20">
+<h1></h1>
+
+    {if condition="$detail.status == 0"}
+        <h1>该入驻申请已传送至o2oeshop系统管理人员，审核结果将于1~3天内回复</h1>
+    {elseif condition="$detail.status == 1"/}
+        <h1>该入驻申请已被系统管理人员审核通过！</h1>
+    {elseif condition="$detail.status == 2"/}
+        <h1>很抱歉，你提交的材料不符合条件，请重新提交！</h1>
+    {else /}
+        <h1>该入驻申请已作废或不存在该入驻申请情况</h1>
+    {/if}
+
+</div>
+{include file="public/footer" /}
+</body>
+</html>

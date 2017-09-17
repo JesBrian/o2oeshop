@@ -27,7 +27,6 @@ class Category extends Controller
 
     /**
      * 展示添加分类页面的功能函数
-     * 添加分类页面的功能函数
      */
     public function add()
     {

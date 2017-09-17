@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\edit.html";i:1505304662;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505302890;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\bis\dellist.html";i:1485076220;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505395700;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -33,38 +33,39 @@
 
 
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 商户入驻申请 </nav>
 <div class="page-container">
-    <form class="form form-horizontal form-o2o-add" id="form-o2o-add" method="post" action="<?php echo url('category/save'); ?>">
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生活服务分类名称：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="<?php echo $categoryData['name']; ?>" placeholder="" id="name" name="name">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="parent_id" class="select">
-                    <option value="0">一级分类</option>
-                    <?php foreach($normalFirstCategory as $vo): ?>
-					<option value="<?php echo $vo['id']; ?>" <?php if($vo['id'] == $categoryData['parent_id']): ?>selected<?php endif; ?>> -- <?php echo $vo['name']; ?></option>
-					<?php endforeach; ?>
-				</select>
-				</span>
-            </div>
-        </div>
-
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button type="submit" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
-
-                <button onClick="layer_close();" class="btn btn-default radius" type="button">
-                    &nbsp;&nbsp;取消&nbsp;&nbsp;
-                </button>
-            </div>
-        </div>
-    </form>
+	
+	
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+				<tr class="text-c">
+					<th width="80">ID</th>
+					<th width="100">商户名称</th>
+					<th width="30">法人</th>
+					<th width="150">联系电话</th>
+					<th width="60">申请时间</th>
+					<th width="60">状态</th>
+					<th width="100">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr class="text-c">
+					<td></td>
+					<td></td>
+					<td class="text-c"></td>
+					<td class="text-c"></td>
+					<td></td>
+					<td class="td-status"><a href="" title="点击修改状态"></a></td>
+					<td class="td-manage"> <a style="text-decoration:none" class="ml-5" onClick="" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
 </div>
 <!--包含头部文件-->
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script>

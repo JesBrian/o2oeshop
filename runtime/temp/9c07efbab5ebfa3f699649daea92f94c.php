@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\edit.html";i:1505305475;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505302890;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\register\waiting.html";i:1505642340;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\header.html";i:1505568789;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\footer.html";i:1505568844;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/css/style.css" />
   <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="__STATIC__/admin/uploadify/uploadify.css" />
 <!--[if IE 6]>
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -30,45 +31,20 @@
 <meta name="keywords" content="tp5打造o2o平台系统">
 <meta name="description" content="o2o平台">
 </head>
+<div class="cl pd-5 bg-1 bk-gray mt-20">
+<h1></h1>
 
+    <?php if($detail['status'] == 0): ?>
+        <h1>该入驻申请已传送至o2oeshop系统管理人员，审核结果将于1~3天内回复</h1>
+    <?php elseif($detail['status'] == 1): ?>
+        <h1>该入驻申请已被系统管理人员审核通过！</h1>
+    <?php elseif($detail['status'] == 2): ?>
+        <h1>很抱歉，你提交的材料不符合条件，请重新提交！</h1>
+    <?php else: ?>
+        <h1>该入驻申请已作废或不存在该入驻申请情况</h1>
+    <?php endif; ?>
 
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
-<div class="page-container">
-    <form class="form form-horizontal form-o2o-add" id="form-o2o-add" method="post" action="<?php echo url('category/updateData'); ?>">
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生活服务分类名称：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="<?php echo $categoryData['name']; ?>" placeholder="" id="name" name="name">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="parent_id" class="select">
-                    <option value="0">一级分类</option>
-                    <?php foreach($normalFirstCategory as $vo): ?>
-					<option value="<?php echo $vo['id']; ?>" <?php if($vo['id'] == $categoryData['parent_id']): ?>selected<?php endif; ?>> -- <?php echo $vo['name']; ?></option>
-					<?php endforeach; ?>
-				</select>
-				</span>
-            </div>
-        </div>
-
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button type="submit" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
-
-                <button onClick="layer_close();" class="btn btn-default radius" type="button">
-                    &nbsp;&nbsp;取消&nbsp;&nbsp;
-                </button>
-            </div>
-        </div>
-
-        <input type="hidden" name="id" value="<?php echo $categoryData['id']; ?>">
-    </form>
 </div>
-<!--包含头部文件-->
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/layer/2.1/layer.js"></script> 
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/My97DatePicker/WdatePicker.js"></script> 
@@ -78,4 +54,9 @@
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui/js/H-ui.js"></script> 
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui.admin/js/H-ui.admin.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/image.js"></script>
 
+
+</body>
+</html>

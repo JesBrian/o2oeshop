@@ -33,6 +33,21 @@ class Category extends Model
     }
 
     /**
+     * 获取正常二级分类的数据[不分页]
+     */
+    public function getNormalSecondCategory($parent_id = 0)
+    {
+        $data = [
+            "status"    =>  1,
+            "parent_id" =>  $parent_id,
+        ];
+        $order = [
+            "id"    =>  "desc",
+        ];
+        return $this->where($data)->order($order)->select();
+    }
+
+    /**
      * 获取非删除分类的数据[分页]
      */
     public function getCategory($parentId)

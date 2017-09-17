@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\index\index.html";i:1505218123;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505395700;s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\menu.html";i:1505395701;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\index\index.html";i:1505477437;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505395700;s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\menu.html";i:1505644837;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
 ﻿<!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -116,9 +116,9 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 商家管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="product-brand.html" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li>
-					<li><a data-href="product-category.html" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
-					<li><a data-href="product-list.html" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
+					<li><a data-href="<?php echo url('bis/index'); ?>" data-title="商家列表" href="javascript:void(0)">商家列表</a></li>
+					<li><a data-href="<?php echo url('bis/apply'); ?>" data-title="审核商家入驻申请" href="javascript:void(0)">审核商家入驻申请</a></li>
+					<li><a data-href="<?php echo url('bis/dellist'); ?>" data-title="删除的商家入驻申请" href="javascript:void(0)">删除的商家入驻申请</a></li>
 				</ul>
 			</dd>
 		</dl>
