@@ -39,12 +39,20 @@ class Register extends Controller
         $data = $request->post();
         //print_r($data);
 
-        //验证商家基本信息
-        /*
+        //验证商家基本信息、总店信息、商家账户信息
         $bisValidate = validate("Bis");
         if (!$bisValidate->check($data)) {
             $this->error($bisValidate->getError());
-        }*/
+        }
+        $bisLocationValidate = validate("BisLocation");
+        if (!$bisLocationValidate->check($data)) {
+            $this->error($bisLocationValidate->getError());
+        }
+        $bisAccountValidate = validate("BisAccount");
+        if (!$bisAccountValidate->scene("add")->check($data)) {
+            $this->error($bisAccountValidate->getError());
+        }
+
         //获取经纬度
         $lnglat = \Map::getLngLat($data["address"]);
         if(empty($lnglat) || $lnglat["status"]!=0 || $lnglat["result"]["precise"]!=1) {
@@ -74,11 +82,6 @@ class Register extends Controller
         ];
         $bisId = model('Bis')->add($bisData);
 
-        //验证总店信息
-        $bisLocationValidate = validate("BisLocation");
-        if (!$bisLocationValidate->check($data)) {
-            $this->error($bisLocationValidate->getError());
-        }
         //总店信息入数据库
         $data["cat"] = "";
         if(!empty($data['se_category_id']))//处理二级分类数据[将数据以‘|’合并成字符串]
@@ -91,7 +94,7 @@ class Register extends Controller
             'tel'           =>    $data['tel'],
             'contact'       =>    $data['contact'],
             'category_id'   =>    $data['category_id'],
-            'category_path' =>    $data['category_id'] . ',' . $data['cat'],
+            'category_path' =>    $data["cat"] == "" ? "" : $data['category_id'] . ',' . $data['cat'],
             'city_id'       =>    $data['city_id'],
             'city_path'     =>    empty($data['se_city_id']) ? $data['city_id'] : $data['city_id'].','.$data['se_city_id'],
             'address'       =>    $data['address'],
@@ -103,11 +106,6 @@ class Register extends Controller
         ];
         $locationId = model('BisLocation')->add($locationData);
 
-        //验证商家账户信息
-        $bisAccountValidate = validate("BisAccount");
-        if (!$bisAccountValidate->scene("add")->check($data)) {
-            $this->error($bisAccountValidate->getError());
-        }
         //商家账户信息入数据库
         $data['code'] = mt_rand(100, 10000);// 自动生成密码的加密字符串
         $accountData = [
@@ -144,6 +142,10 @@ class Register extends Controller
         }
 
         $detail = model("Bis")->get($id);
+        if(empty($detail))
+        {
+            $this->error("请求错误",url('register/index'));
+        }
         $this->assign("detail",$detail);
 
         return $this->fetch();

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\login\index.html";i:1505479515;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\header.html";i:1505568789;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\footer.html";i:1505568844;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\login\index.html";i:1505722629;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\header.html";i:1505568789;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\footer.html";i:1505568844;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -37,7 +37,7 @@
 
   <div id="loginform" class="loginBox">
 
-    <form class="form form-horizontal" action="" method="post">
+    <form class="form form-horizontal" action="<?php echo url('login/login'); ?>" method="post">
       <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
         <div class="formControls col-xs-8">
@@ -50,7 +50,15 @@
           <input id="" name="password" type="password" placeholder="密码" class="input-text size-L">
         </div>
       </div>
-      
+
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+        <div class="formControls col-xs-8">
+          <div><img src="<?php echo captcha_src(); ?>" alt="captcha" onclick="this.src=this.src+'?'" /></div>
+          <input id="" name="captcha" type="captcha" placeholder="验证码" class="input-text size-L">
+        </div>
+      </div>
+
       
       <div class="row cl">
 

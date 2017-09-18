@@ -10,6 +10,8 @@ class Bis extends Controller
     private $bisModel;
     private $bisLocationModel;
     private $bisAccountModel;
+    private $cityModel;
+    private $categoryModel;
 
     public function _initialize()
     {
@@ -17,10 +19,18 @@ class Bis extends Controller
         $this->bisModel = model("Bis");
         $this->bisLocationModel = model("BisLocation");
         $this->bisAccountModel = model("BisAccount");
+        $this->cityModel = model("City");
+        $this->categoryModel = model("Category");
     }
 
+    /**
+     * 展示所有入驻的商家列表页面[除了删除状态的]
+     */
     public function index()
     {
+        $bisData = $this->bisModel->where("status","NEQ","-1")->paginate();
+        //dump($bisData);exit;
+        $this->assign("bisData", $bisData);
         return $this->fetch();
     }
 
@@ -48,25 +58,76 @@ class Bis extends Controller
         //print_r($bisData);
         $this->assign("bisData", $bisData);
 
+        //获取一级城市信息并传递给模板
+        $fiCityData = $this->cityModel->find($bisData["city_id"]);
+        //print_r($fiCityData);exit;
+        $this->assign("fiCityData",$fiCityData);
+
+        //判断是否有二级城市，如果有的话获取二级城市信息并传递给模板
+        if($bisData["city_path"] != 0)//是否有二级城市
+        {
+            $seCityDataId = explode(",", $bisData["city_path"])[1];
+            $seCityData = $this->cityModel->find($seCityDataId);
+            //dump($seCityData);
+        }
+        else
+        {
+            $seCityData = ["name"=>'暂无详细信息'];
+        }
+        $this->assign("seCityData",$seCityData);
+
         //获取商户总店信息并传递给模板
         $bisLocationData = $this->bisLocationModel->getBisLocationByBisId($bisId);
         //print_r($bisLocationData);exit;
         $this->assign("bisLocationData", $bisLocationData);
+
+        //获取分类信息并传递给模板
+        $fiCategoryData = $this->categoryModel->find($bisLocationData["category_id"]);
+        $this->assign("fiCategoryData", $fiCategoryData);
+        if($bisLocationData["category_path"] != "") {
+            $seCategoryIdStr = explode(",", $bisLocationData["category_path"])[1];
+            $seCategoryIdArr = explode("|", $seCategoryIdStr);
+            $seCategoryData = $this->categoryModel->where("id","in", $seCategoryIdArr)->select();
+        }
+        else
+        {
+            $seCategoryData = [];
+        }
+        $this->assign("seCategoryData", $seCategoryData);
 
         //获取商户账户信息并传递给模板
         $bisAccountData = $this->bisAccountModel->getBisAccountByBisId($bisId);
         //print_r($bisAccountData);exit;
         $this->assign("bisAccountData", $bisAccountData);
 
-
         return $this->fetch();
     }
 
     /**
-     * 展示删除入驻商家页面
+     * 改变入驻商家的状态功能函数
+     */
+    public function status(Request $request)
+    {
+        $data = $request->param();
+        //dump($data);
+        if($this->bisModel->updateById($data, $data["bisId"])) {
+            if($this->bisLocationModel->allowField(true)->save($data, ["bis_id"=>$data["bisId"]])) {
+                if($this->bisAccountModel->allowField(true)->save($data, ["bis_id"=>$data["bisId"]])) {
+                    $this->success("商户入驻申请状态修改成功!");
+                }
+            }
+        }
+        $this->error("商户入驻申请状态修改失败！！");
+    }
+
+    /**
+     * 展示删除入驻商家列表页面
      */
     public function dellist()
     {
+        $bisData = $this->bisModel->getBisByStatus(-1);
+        //print_r($bisData);exit;
+        $this->assign("bisData", $bisData);
         return $this->fetch();
     }
 }

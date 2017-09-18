@@ -16,14 +16,14 @@
             <div class="formControls col-xs-8 col-sm-2">
 				<span class="select-box">
 				<select name="city_id" class="select cityId">
-					<option value="0">--请选择--</option>
+					<option value="0">{$fiCityData.name}</option>
 				</select>
 				</span>
             </div>
             <div class="formControls col-xs-8 col-sm-2">
 				<span class="select-box">
 				<select name="se_city_id" class="select se_city_id">
-					<option value="0">--请选择--</option>
+					<option value="0">{$seCityData.name}</option>
 				</select>
 				</span>
             </div>
@@ -32,80 +32,76 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">缩略图：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input id="file_upload"  type="file" multiple="true" >
-                <img style="display: none" id="upload_org_code_img" src="" width="150" height="150">
-                <input id="file_upload_image" name="logo" type="hidden" multiple="true" value="">
+                <img id="upload_org_code_img" src="{$bisData.logo}" width="150" height="150">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">营业执照：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input id="file_upload_other"  type="file" multiple="true" >
-                <img style="display: none" id="upload_org_code_img_other" src="" width="150" height="150">
-                <input id="file_upload_image_other" name="licence_logo" type="hidden" multiple="true" value="">
+                <img id="upload_org_code_img_other" src="{$bisData.licence_logo}" width="150" height="150">
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">商户介绍：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <script id="editor1"  type="text/plain" name="description" style="width:80%;height:300px;"></script>
+                <script id="editor1"  type="text/plain" name="description" style="width:80%;height:300px;">{$bisData.description}</script>
                 </div>
                 </div>
                 <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">银行账号:</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="bank_info">
+                    <input type="text" class="input-text" value="{$bisData.bank_info}" placeholder="" id="" name="bank_info">
                     </div>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">开户行名称:</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="bank_name">
+                    <input type="text" class="input-text" value="{$bisData.bank_name}" placeholder="" id="" name="bank_name">
                     </div>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">开户行姓名:</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="bank_user">
+                    <input type="text" class="input-text" value="{$bisData.bank_user}" placeholder="" id="" name="bank_user">
                     </div>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">法人:</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="faren">
+                    <input type="text" class="input-text" value="{$bisData.faren}" placeholder="" id="" name="faren">
                     </div>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">法人电话:</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="faren_tel">
+                    <input type="text" class="input-text" value="{$bisData.faren_tel}" placeholder="" id="" name="faren_tel">
                     </div>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>邮箱：</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="email">
+                    <input type="text" class="input-text" value="{$bisData.email}" placeholder="" id="" name="email">
                     </div>
                     </div>
                 总店信息：
                 <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">电话:</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="tel">
+                    <input type="text" class="input-text" value="{$bisLocationData.tel}" placeholder="" id="" name="tel">
                     </div>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">联系人:</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="contact">
+                    <input type="text" class="input-text" value="{$bisLocationData.contact}" placeholder="" id="" name="contact">
                     </div>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属分类：</label>
                 <div class="formControls col-xs-8 col-sm-3"> <span class="select-box">
                     <select name="category_id" class="select categoryId">
-                    <option value="0">--请选择--</option>
+                    <option value="0">{$fiCategoryData.name}</option>
                 </select>
                 </span>
                 </div>
@@ -114,28 +110,31 @@
                     <label class="form-label col-xs-4 col-sm-2">所属子类：</label>
                 <div class="formControls col-xs-8 col-sm-3 skin-minimal">
                     <div class="check-box se_category_id">
-
+                        {foreach $seCategoryData as $vo}
+                        {$vo.name}
+                        <label for="checkbox-moban">&nbsp;&nbsp;</label>
+                        {/foreach}
                     </div>
                     </div>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">商户地址：</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="address">
+                    <input type="text" class="input-text" value="{$bisLocationData.address}" placeholder="" id="" name="address">
                     </div>
                     <a  class="btn btn-default radius ml-10 maptag">标注</a>
                     </div>
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">营业时间:</label>
                 <div class="formControls col-xs-8 col-sm-3">
-                    <input type="text" class="input-text" value="" placeholder="" id="" name="open_time">
+                    <input type="text" class="input-text" value="{$bisLocationData.open_time}" placeholder="" id="" name="open_time">
                     </div>
                     </div>
 
                     <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">门店简介：</label>
                 <div class="formControls col-xs-8 col-sm-9">
-                    <script id="editor"  type="text/plain" name="content" style="width:80%;height:300px;"></script>
+                    <script id="editor"  type="text/plain" name="content" style="width:80%;height:300px;">{$bisLocationData.content}</script>
             </div>
         </div>
 
@@ -143,21 +142,10 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2">用户名:</label>
             <div class="formControls col-xs-8 col-sm-3">
-                <input type="text" class="input-text" value="" placeholder="" id="" name="username">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">密码:</label>
-            <div class="formControls col-xs-8 col-sm-3">
-                <input type="password" class="input-text" value="" placeholder="" id="" name="password">
+                <input type="text" class="input-text" value="{$bisAccountData.username}" placeholder="" id="" name="username">
             </div>
         </div>
 
-        <div class="row cl">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button  class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 申请</button>
-            </div>
-        </div>
     </form>
 </article>
 
