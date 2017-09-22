@@ -2,10 +2,9 @@
 
 namespace app\bis\controller;
 
-use think\Controller;
 use think\Session;
 
-class Index extends Controller
+class Index extends BaseController
 {
     public function index()
     {

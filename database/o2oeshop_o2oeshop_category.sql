@@ -1,0 +1,13 @@
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('美食', 0, 666, 1, 1505298923, 1505396188);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('娱乐', 0, 6, 1, 1505299252, 1505392213);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('KTV', 2, 0, 1, 1505300570, 1505300570);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('休闲', 0, 0, 1, 1505301607, 1505396193);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('酒店', 0, 66, -1, 1505301617, 1505395463);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('电影', 0, 88, 1, 1505303225, 1505393393);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('娱乐123', 4, 0, 1, 1505304477, 1505306207);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('Test', 0, 0, 0, 1505304729, 1505394952);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('电影668', 0, 20, -1, 1505388781, 1505395401);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('酒店', 0, 0, 1, 1505395476, 1505395490);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('888', 0, 0, 0, 1505396203, 1505396208);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('咸鱼瘫', 4, 0, 1, 1505699927, 1505699927);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('毫无理想', 4, 0, 1, 1505699948, 1505699948);

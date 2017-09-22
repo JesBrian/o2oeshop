@@ -1,0 +1,209 @@
+CREATE DATABASE o2oeshop;
+USE o2oeshop;
+
+#生活服务分类表
+CREATE TABLE o2oeshop_category
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(50) NOT NULL DEFAULT '',
+  parent_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0,
+  KEY parent_id(parent_id)
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#城市表
+CREATE TABLE o2oeshop_city
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(50) NOT NULL DEFAULT '',
+  uname VARCHAR(50) NOT NULL DEFAULT '',
+  parent_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  is_default TINYINT(1) NOT NULL DEFAULT 0,
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#商圈表
+CREATE TABLE o2oeshop_area
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(50) NOT NULL DEFAULT '',
+  city_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  parent_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0,
+  KEY parent_id(parent_id),
+  KEY city_id(city_id)
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#商户表
+CREATE TABLE o2oeshop_bis
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(50) NOT NULL DEFAULT '',
+  email VARCHAR(50) NOT NULL DEFAULT '',
+  logo VARCHAR(255) NOT NULL DEFAULT '',
+  licence_logo VARCHAR(255) NOT NULL DEFAULT '',  /*营业执照*/
+  description TEXT NOT NULL,
+  city_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  city_path VARCHAR(50) NOT NULL DEFAULT 0,
+  bank_info VARCHAR(50) NOT NULL DEFAULT 0,
+  bank_name VARCHAR(50) NOT NULL DEFAULT 0,
+  bank_user VARCHAR(50) NOT NULL DEFAULT 0,
+  balance DECIMAL(20,2) NOT NULL DEFAULT '0.00',
+  faren VARCHAR(20) NOT NULL DEFAULT 0,  /*商户法人代表*/
+  faren_tel VARCHAR(20) NOT NULL DEFAULT 0,  /*法人联系方式*/
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0,
+  KEY city_id(city_id),
+  KEY name(name)
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#商户账户表
+CREATE TABLE o2oeshop_bis_account
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  username VARCHAR(50) NOT NULL DEFAULT '',
+  password CHAR(32) NOT NULL DEFAULT '',
+  code VARCHAR(10) NOT NULL DEFAULT '',
+  bis_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  last_login_ip VARCHAR(20) NOT NULL DEFAULT '',
+  last_login_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  is_main TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,   /*是否为总管理员 1是*/
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0,
+  KEY bis_id(bis_id),
+  KEY username(username)
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#商户门店表
+CREATE TABLE o2oeshop_bis_location
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(50) NOT NULL DEFAULT '',
+  logo VARCHAR(255) NOT NULL DEFAULT '',
+  contact VARCHAR(20) NOT NULL DEFAULT '',  /*联系人*/
+  tel VARCHAR(20) NOT NULL DEFAULT '',
+  address VARCHAR(255) NOT NULL DEFAULT '',
+  xpoint VARCHAR(20) NOT NULL DEFAULT '',  /*经度*/
+  ypoint VARCHAR(20) NOT NULL DEFAULT '',  /*纬度*/
+  bis_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  open_time VARCHAR(50) NOT NULL DEFAULT '',  /*营业时间*/
+  content TEXT NOT NULL,  /*内容介绍*/
+  is_main TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,   /*是否为总店*/
+  city_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  city_path VARCHAR(50) NOT NULL DEFAULT 0,
+  category_id INT(10) UNSIGNED NOT NULL DEFAULT 0,  /*分类*/
+  category_path VARCHAR(50) NOT NULL DEFAULT '',
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0,
+  KEY bis_id(bis_id),
+  KEY city_id(city_id),
+  KEY category_id(category_id),
+  KEY name(name)
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#团购商品表
+CREATE TABLE o2oeshop_deal
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  name VARCHAR(80) NOT NULL DEFAULT '',
+  category_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  se_category_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  bis_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  location_ids VARCHAR(100) NOT NULL DEFAULT '',  /*所属店面*/
+  image VARCHAR(255) NOT NULL DEFAULT '',  /*商品商标*/
+  description TEXT NOT NULL ,
+  start_time INT(11) NOT NULL DEFAULT 0,
+  end_time INT(11) NOT NULL DEFAULT 0,
+  origin_price DECIMAL(10,2) NOT NULL DEFAULT '0.00',  /*原价*/
+  current_price DECIMAL(10,2) NOT NULL DEFAULT '0.00',  /*折后价*/
+  city_id INT(10) UNSIGNED NOT NULL DEFAULT 0,  /*商品所属城市*/
+  buy_count INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  total_count  INT(10) UNSIGNED NOT NULL DEFAULT 0,  /*总数*/
+  coupons_start_time INT(10) UNSIGNED NOT NULL DEFAULT 0, /*团购券开始时间*/
+  coupons_end_time INT(10) UNSIGNED NOT NULL DEFAULT 0, /*团购券结束时间*/
+  xpoint VARCHAR(20) NOT NULL DEFAULT '',  /*经度*/
+  ypoint VARCHAR(20) NOT NULL DEFAULT '',  /*纬度*/
+  bis_account_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  balance_price DECIMAL(10,2) NOT NULL DEFAULT '0.00',
+  notes TEXT NOT NULL ,
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0,
+  KEY category_id(category_id),
+  KEY se_category_id(se_category_id),
+  KEY city_id(city_id),
+  KEY start_time(start_time),
+  KEY end_time(end_time)
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#用户表
+CREATE TABLE o2oeshop_user
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  username VARCHAR(20) UNIQUE NOT NULL DEFAULT '',
+  email VARCHAR(50) UNIQUE NOT NULL DEFAULT '',
+  mobile VARCHAR(20) NOT NULL DEFAULT '',
+  password CHAR(32) NOT NULL DEFAULT '',
+  code VARCHAR(10) NOT NULL DEFAULT '',
+  last_login_ip VARCHAR(20) NOT NULL DEFAULT '',
+  last_login_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#推荐位表
+CREATE TABLE o2oeshop_featured
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  title VARCHAR(30) NOT NULL DEFAULT '',
+  type TINYINT(1) NOT NULL DEFAULT 0, /* 0表示大图、1表示广告 */
+  image VARCHAR(255) NOT NULL DEFAULT '',
+  url VARCHAR(255) NOT NULL  DEFAULT '',
+  descript VARCHAR(30) NOT NULL DEFAULT '',
+  listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+
+#订单表
+CREATE TABLE o2oeshop_order
+(
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  user_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  username VARCHAR(20) NOT NULL DEFAULT '',
+  deal_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  deal_count INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  total_price DECIMAL(20,2) NOT NULL DEFAULT 0.00, /*总支付金钱*/
+  out_trade_no VARCHAR(100) UNICODE NOT NULL DEFAULT '',  /*订单编号*/
+  payment_id TINYINT(1) NOT NULL DEFAULT 1,   /*支付方式 -- 1默认微信支付*/
+  transaction_id VARCHAR(100) NOT NULL DEFAULT '',  /*微信支付*/
+  pay_time VARCHAR(20) NOT NULL DEFAULT '',  /*支付时间*/
+  pay_status TINYINT(1) NOT NULL DEFAULT 0,  /*支付状态，0-未支付、1-支付成功、2-支付失败*/
+  pay_amount DECIMAL(20,2) NOT NULL DEFAULT 0.00,  /*微信支付返回总额*/
+  referer VARCHAR(255) NOT NULL DEFAULT '',   /*订单来自哪里？？？*/
+  status TINYINT(1) NOT NULL DEFAULT 1,    /*-1表示删除*/
+  create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+  update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0,
+  key user_id(user_id),
+  key create_time(create_time)
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
+

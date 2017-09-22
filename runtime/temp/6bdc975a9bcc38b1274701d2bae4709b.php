@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:74:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\index\index.html";i:1505720873;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\header.html";i:1505568789;s:74:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\menu.html";i:1486235826;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\footer.html";i:1505568844;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:74:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\index\index.html";i:1505720873;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\header.html";i:1505568789;s:74:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\menu.html";i:1505999375;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\footer.html";i:1505568844;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -76,8 +76,8 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 门店管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-				    <li><a _href="" data-title="新增门店" href="javascript:void(0)">新增门店</a></li>
-					<li><a _href="" data-title="门店列表" href="javascript:void(0)">门店列表</a></li>
+					<li><a data-href="<?php echo url('/bis/location/index'); ?>" data-title="门店列表" href="javascript:void(0)">门店列表</a></li>
+				    <li><a data-href="<?php echo url('/bis/location/add'); ?>" data-title="新增门店" href="javascript:void(0)">新增门店</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -86,8 +86,8 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 团购管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a _href="" data-title="团购列表" href="javascript:void(0)">团购列表</a></li>
-					<li><a _href="" data-title="团购商品添加" href="javascript:void(0)">团购商品添加</a></li>
+					<li><a data-href="<?php echo url('deal/index'); ?>" data-title="团购列表" href="javascript:void(0)">团购列表</a></li>
+					<li><a data-href="<?php echo url('deal/add'); ?>" data-title="团购商品添加" href="javascript:void(0)">团购商品添加</a></li>
 					
 				</ul>
 			</dd>

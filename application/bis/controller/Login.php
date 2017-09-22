@@ -38,9 +38,14 @@ class Login extends Controller
         }
         else
         {
+            if($bisAccountInfo["status"] != 1)
+            {
+                $this->error("用户审核未通过，请耐心等待平台方管理员审核");
+            }
             if(md5($data["password"] . $bisAccountInfo["code"]) == $bisAccountInfo["password"])
             {
                 session("bisAccountUsername",$data["username"]);
+                session("bisId",$bisAccountInfo["bis_id"]);
                 $this->success("欢迎 " . $data["username"] . "登录",url("index/index"));
             }
             else
@@ -55,7 +60,9 @@ class Login extends Controller
      */
     public function logout()
     {
+        //将保存的Session删除，并且将页面跳转到登录页面
         Session::delete('bisAccountUsername');
+        Session::delete('bisAccountId');
         $this->redirect("/bis/login/index");
     }
 }
