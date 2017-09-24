@@ -24,6 +24,5 @@ class Index extends Controller
 
         //echo \phpmail\Email::send("2675862735@qq.com","666","666");
 
-
     }
 }

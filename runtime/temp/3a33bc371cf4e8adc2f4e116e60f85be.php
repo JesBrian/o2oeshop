@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\location\index.html";i:1505994985;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\header.html";i:1505568789;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\footer.html";i:1505568844;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\category\add.html";i:1505395701;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1506162299;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1506162248;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -31,57 +31,41 @@
 <meta name="keywords" content="tp5打造o2o平台系统">
 <meta name="description" content="o2o平台">
 </head>
-<body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 商户入驻申请</nav>
+
+
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
 <div class="page-container">
-    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"> <a class="btn btn-primary radius"
-                                                                href="<?php echo url('location/add'); ?>"><i class="Hui-iconfont">&#xe600;</i> 添加分店</a></span>
-        <span class="r"></span></div>
-    <div class="mt-20">
-        <table class="table table-border table-bordered table-bg table-hover table-sort">
-            <thead>
-            <tr class="text-c">
-                <th width="80">ID</th>
-                <th width="100">名称</th>
-                <th width="60">申请时间</th>
-                <th width="60">是否为总店</th>
-                <th width="60">状态</th>
-                <th width="100">操作</th>
-            </tr>
-            </thead>
-            <tbody>
+    <form class="form form-horizontal form-o2o-add" id="form-o2o-add" method="post" action="<?php echo url('category/save'); ?>">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生活服务分类名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="name" name="name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+				<span class="select-box">
+				<select name="parent_id" class="select">
+                    <option value="0">一级分类</option>
+                    <?php foreach($normalFirstCategory as $vo): ?>
+					<option value="<?php echo $vo['id']; ?>"> -- <?php echo $vo['name']; ?></option>
+					<?php endforeach; ?>
+				</select>
+				</span>
+            </div>
+        </div>
 
-            <?php foreach($bisLocationData as $vo): ?>
-            <tr class="text-c">
-                <td><?php echo $vo["id"]; ?></td>
-                <td><?php echo $vo["name"]; ?></td>
-                <td><?php echo $vo["create_time"]; ?></td>
-                <td>
-                    <?php if($vo['is_main'] == 0): ?>
-                    否
-                    <?php else: ?>
-                    是
-                    <?php endif; ?>
-                </td>
-                <td class="td-status"><?php echo status($vo["status"]); ?></td>
-                <td class="td-manage">
-                    <a style="text-decoration:none" class="ml-5" onClick="o2o_s_edit('查看','<?php echo url('location/detail',['id' => $vo['id']]); ?>','1008',388)" href="javascript:;" title="查看">
-                        <i class="Hui-iconfont">&#xe6df;</i>
-                    </a>
-                    <a style="text-decoration:none" class="ml-5" onClick="" href="<?php echo url('/bis/location/status',['id'=>$vo['id'],'status'=>-1]); ?>" title="下架">
-                        <i class="Hui-iconfont">&#xe6e2;</i>
-                    </a>
-                </td>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button type="submit" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
 
-            </tr>
-            <?php endforeach; ?>
-
-            </tbody>
-        </table>
-    </div>
-
-    <?php echo pagination($bisLocationData); ?>
-
+                <button onClick="layer_close();" class="btn btn-default radius" type="button">
+                    &nbsp;&nbsp;取消&nbsp;&nbsp;
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
 <!--包含头部文件-->
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script>

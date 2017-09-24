@@ -2,10 +2,9 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 use think\Request;
 
-class Category extends Controller
+class Category extends BaseController
 {
     private $categoryModel;
     private $categoryValidate;
@@ -96,25 +95,6 @@ class Category extends Controller
             $this->success("分类数据更新成功");
         } else {
             $this->error("分类数据更新失败");
-        }
-    }
-
-    /**
-     *  处理修改分类状态的功能函数
-     */
-    public function status(Request $request)
-    {
-        $data = $request->param();
-
-        if (!$this->categoryValidate->scene("status")->check($data)) {
-            $this->error($this->categoryValidate->getError());
-        }
-
-        /*直接更新数据并且依照返回值判断更新情况*/
-        if ($this->categoryModel->update($data)) {
-            $this->success("分类数据状态更新成功");
-        } else {
-            $this->error("分类数据状态更新失败");
         }
     }
 

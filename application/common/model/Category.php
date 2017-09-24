@@ -77,4 +77,20 @@ class Category extends Model
         ];
         return $this->where($data)->order($order)->paginate();
     }
+
+    /**
+     * 获取首页5种一级分类
+     */
+    public function getNormalFiCategory($parent_id = 0)
+    {
+        $data = [
+            "parent_id"     =>  $parent_id,
+            "status"        =>  1,
+        ];
+        $order = [
+            "listorder"     =>  "desc",
+            "id"            =>  "asc"
+        ];
+        return $this->where($data)->order($order)->limit(5)->select();
+    }
 }

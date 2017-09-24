@@ -25,24 +25,31 @@
             </div>
         </div>
 
+        <div style="width:680PX; height:380PX; position:absolute; background:url(__STATIC__/index/image/login-logo.png) no-repeat; background-size:100% 100%;" class="wrap"></div>
         <div class="content">
             <div class="wrap">
                 <div class="login-logo"></div>
                 <div class="login-area">
                     <div class="title">登录</div>
                     <div class="login">
-                        <form>
+                        <form action="{:url('user/login')}" method="post">
                             <div class="ordinaryLogin">
                                 
                                 <p class="pass-form-item">
                                     <label class="pass-label">用户名</label>
-                                    <input type="text" name="userName" class="pass-text-input" placeholder="用户名">
+                                    <input type="text" name="username" class="pass-text-input" placeholder="用户名">
                                 </p>
                                 <p class="pass-form-item">
                                     <label class="pass-label">密码</label>
                                     <input type="password" name="password" class="pass-text-input" placeholder="密码">
                                 </p>
-                                
+
+                                <p class="pass-form-item">
+                                    <label class="pass-label">验证码</label>
+                                    <input type="text" name="captcha" class="pass-text-input" placeholder="密码">
+                                    <div><img src="{:captcha_src()}" alt="captcha" onclick="this.src=this.src+'?'" style="width:100%;"/></div>
+                                </p>
+
                             </div>
                            
                             <div class="commonLogin">

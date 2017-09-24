@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\index\index.html";i:1505477437;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505395700;s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\menu.html";i:1505998086;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\index\index.html";i:1505477437;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1506162299;s:76:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\menu.html";i:1506161968;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1506162248;}*/ ?>
 ﻿<!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/css/style.css" />
   <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="__STATIC__/admin/uploadify/uploadify.css" />
 <!--[if IE 6]>
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -135,8 +136,8 @@
 			<dt><i class="Hui-iconfont">&#xe622;</i> 团购商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="<?php echo url('deal/index'); ?>" data-title="评论列表" href="javascript:;">商品列表</a></li>
-					<li><a data-href="feedback-list.html" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
+					<li><a data-href="<?php echo url('deal/check'); ?>" data-title="意见反馈" href="javascript:void(0)">商家团购审核</a></li>
+					<li><a data-href="<?php echo url('deal/index'); ?>" data-title="评论列表" href="javascript:;">团购商品列表</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -144,16 +145,8 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 推荐位管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="member-list.html" data-title="会员列表" href="javascript:;">会员列表</a></li>
-					<li><a data-href="member-del.html" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
-					<li><a data-href="member-level.html" data-title="等级管理" href="javascript:;">等级管理</a></li>
-					<li><a data-href="member-scoreoperation.html" data-title="积分管理" href="javascript:;">积分管理</a></li>
-					<li><a data-href="member-record-browse.html" data-title="浏览记录" href="javascript:void(0)">浏览记录</a>
-					</li>
-					<li><a data-href="member-record-download.html" data-title="下载记录" href="javascript:void(0)">下载记录</a>
-					</li>
-					<li><a data-href="member-record-share.html" data-title="分享记录" href="javascript:void(0)">分享记录</a>
-					</li>
+					<li><a data-href="<?php echo url('featured/add'); ?>" data-title="会员列表" href="javascript:;">添加推荐位内容</a></li>
+					<li><a data-href="<?php echo url('featured/index'); ?>" data-title="删除的会员" href="javascript:;">推荐位内容列表</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -261,6 +254,9 @@
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui/js/H-ui.js"></script> 
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui.admin/js/H-ui.admin.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/image.js"></script>
+
 
 
 <!--请在下方写此页面业务相关的脚本-->

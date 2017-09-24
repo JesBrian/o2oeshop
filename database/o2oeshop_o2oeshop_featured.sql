@@ -1,0 +1,2 @@
+INSERT INTO o2oeshop.o2oeshop_featured (title, type, image, url, description, listorder, status, create_time, update_time) VALUES ('滑天下之大稽', 0, '/upload\\20170923\\678d32801603a3aaf895a70a74e101cb.jpg', 'http://www.jesbrian.cn/index', '滑天下之大稽', 0, 1, 1506164763, 1506169971);
+INSERT INTO o2oeshop.o2oeshop_featured (title, type, image, url, description, listorder, status, create_time, update_time) VALUES ('滑天下之大辣稽', 0, '/upload\\20170923\\b83bfe41f8e65d398c8e13cd067a2503.jpg', 'http://www.jesbrian.cn/index', '滑天下之大辣稽', 0, 1, 1506164800, 1506170419);

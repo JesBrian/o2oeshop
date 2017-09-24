@@ -1,4 +1,4 @@
-INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('美食', 0, 666, 1, 1505298923, 1505396188);
+INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('美食', 0, 666, 1, 1505298923, 1506169994);
 INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('娱乐', 0, 6, 1, 1505299252, 1505392213);
 INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('KTV', 2, 0, 1, 1505300570, 1505300570);
 INSERT INTO o2oeshop.o2oeshop_category (name, parent_id, listorder, status, create_time, update_time) VALUES ('休闲', 0, 0, 1, 1505301607, 1505396193);

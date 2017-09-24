@@ -122,25 +122,24 @@ CREATE TABLE o2oeshop_deal
   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   name VARCHAR(80) NOT NULL DEFAULT '',
   category_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
-  se_category_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  se_category_id VARCHAR(30) NOT NULL DEFAULT '',
   bis_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
   location_ids VARCHAR(100) NOT NULL DEFAULT '',  /*所属店面*/
   image VARCHAR(255) NOT NULL DEFAULT '',  /*商品商标*/
-  description TEXT NOT NULL ,
+  description TEXT NOT NULL,
   start_time INT(11) NOT NULL DEFAULT 0,
   end_time INT(11) NOT NULL DEFAULT 0,
   origin_price DECIMAL(10,2) NOT NULL DEFAULT '0.00',  /*原价*/
   current_price DECIMAL(10,2) NOT NULL DEFAULT '0.00',  /*折后价*/
   city_id INT(10) UNSIGNED NOT NULL DEFAULT 0,  /*商品所属城市*/
+  se_city_id INT(10) UNSIGNED NOT NULL DEFAULT 0,  /*商品所属城市*/
   buy_count INT(10) UNSIGNED NOT NULL DEFAULT 0,
   total_count  INT(10) UNSIGNED NOT NULL DEFAULT 0,  /*总数*/
   coupons_start_time INT(10) UNSIGNED NOT NULL DEFAULT 0, /*团购券开始时间*/
   coupons_end_time INT(10) UNSIGNED NOT NULL DEFAULT 0, /*团购券结束时间*/
-  xpoint VARCHAR(20) NOT NULL DEFAULT '',  /*经度*/
-  ypoint VARCHAR(20) NOT NULL DEFAULT '',  /*纬度*/
   bis_account_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
   balance_price DECIMAL(10,2) NOT NULL DEFAULT '0.00',
-  notes TEXT NOT NULL ,
+  notes TEXT NOT NULL,
   listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
   status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
   create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
@@ -169,6 +168,8 @@ CREATE TABLE o2oeshop_user
   update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0
 )ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
 
+DROP TABLE o2oeshop_featured;
+
 #推荐位表
 CREATE TABLE o2oeshop_featured
 (
@@ -177,7 +178,7 @@ CREATE TABLE o2oeshop_featured
   type TINYINT(1) NOT NULL DEFAULT 0, /* 0表示大图、1表示广告 */
   image VARCHAR(255) NOT NULL DEFAULT '',
   url VARCHAR(255) NOT NULL  DEFAULT '',
-  descript VARCHAR(30) NOT NULL DEFAULT '',
+  description VARCHAR(30) NOT NULL DEFAULT '',
   listorder INT(8) UNSIGNED NOT NULL DEFAULT 0,
   status TINYINT(1) NOT NULL DEFAULT 0,    /*-1表示删除*/
   create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,

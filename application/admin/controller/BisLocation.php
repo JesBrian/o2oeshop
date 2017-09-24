@@ -2,10 +2,9 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 use think\Request;
 
-class BisLocation extends Controller
+class BisLocation extends BaseController
 {
     public function index()
     {
@@ -54,20 +53,5 @@ class BisLocation extends Controller
         $this->assign("seCategoryData", $seCategoryData);
 
         return $this->fetch();
-    }
-
-
-
-    public function status(Request $request)
-    {
-        /* 需要验证的话可添加 */
-
-        $res = model("BisLocation")->update(["status" => $request->param("status")], ["id" => $request->param("id")]);
-
-        if ($res) {
-            $this->success("状态修改成功");
-        } else {
-            $this->error("状态修改失败");
-        }
     }
 }

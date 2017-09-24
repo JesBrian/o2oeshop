@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\bis\index.html";i:1505709637;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1505395700;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1484376736;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\bis\index.html";i:1505709637;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1506162299;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1506162248;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/css/style.css" />
   <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="__STATIC__/admin/uploadify/uploadify.css" />
 <!--[if IE 6]>
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -81,4 +82,7 @@
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui/js/H-ui.js"></script> 
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui.admin/js/H-ui.admin.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/js/common.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/image.js"></script>
+
 

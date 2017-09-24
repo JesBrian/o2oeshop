@@ -17,7 +17,7 @@ class Deal extends Validate
         'current_price'         =>  'require',
         'city_id'               =>  'require',
         'total_count'           =>  'require',
-        'coupons_begin_time'    =>  'require',
+        'coupons_start_time'    =>  'require',
         'coupons_end_time'      =>  'require',
     ];
 

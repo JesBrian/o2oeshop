@@ -22,4 +22,19 @@ class City extends Model
         ];
         return $this->where($data)->order($order)->select();
     }
+
+    /**
+     * 获取所有正常二级城市的数据[不分页]
+     */
+    public function getNormalCity()
+    {
+        $data = [
+            "status"    =>  1,
+            "parent_id" =>  ["NEQ", 0],
+        ];
+        $order = [
+            "id"           =>  "asc"
+        ];
+        return $this->where($data)->order($order)->select();
+    }
 }
