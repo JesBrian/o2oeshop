@@ -1,15 +1,15 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\index\index.html";i:1506311407;s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\head.html";i:1506309990;s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\nav.html";i:1506250898;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\index\index.html";i:1506311407;s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\head.html";i:1506322491;s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\nav.html";i:1506322779;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>首页</title>
+    <title><?php echo $title; ?></title>
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="__STATIC__/index/css/base.css" />
     <link rel="stylesheet" href="__STATIC__/index/css/common.css" />
-    <link rel="stylesheet" href="__STATIC__/index/css/index.css" />
+    <link rel="stylesheet" href="__STATIC__/index/css/<?php echo $controllerName; ?>.css" />
     <script type="text/javascript" src="__STATIC__/index/js/html5shiv.js"></script>
     <script type="text/javascript" src="__STATIC__/index/js/respond.min.js"></script>
     <script type="text/javascript" src="__STATIC__/index/js/jquery-1.11.3.min.js"></script>
@@ -62,9 +62,9 @@
                     <div class="level-item">
                         <div class="first-level">
                             <dl>
-                                <dt class="title"><a href="" target="_top"><?php echo $vo1['name']; ?></a></dt>
+                                <dt class="title"><a href="<?php echo url('lists/index',['categoryId'=>$vo1['id']]); ?>" target="_top"><?php echo $vo1['name']; ?></a></dt>
                                 <?php if(is_array($vo1['seCategory']) || $vo1['seCategory'] instanceof \think\Collection || $vo1['seCategory'] instanceof \think\Paginator): $i = 0;$__LIST__ = is_array($vo1['seCategory']) ? array_slice($vo1['seCategory'],0,2, true) : $vo1['seCategory']->slice(0,2, true); if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?>
-                                <dd><a href="" target="_top" class=""><?php echo $vo2['name']; ?></a></dd>
+                                <dd><a href="<?php echo url('lists/index',['categoryId'=>$vo2['id']]); ?>" target="_top" class=""><?php echo $vo2['name']; ?></a></dd>
                                 <?php endforeach; endif; else: echo "" ;endif; ?>
                             </dl>
                         </div>
@@ -74,7 +74,7 @@
                                     <h4>热门分类</h4>
                                     <ul>
                                         <?php if(is_array($vo1['seCategory']) || $vo1['seCategory'] instanceof \think\Collection || $vo1['seCategory'] instanceof \think\Paginator): if( count($vo1['seCategory'])==0 ) : echo "" ;else: foreach($vo1['seCategory'] as $key=>$vo2): ?>
-                                        <li><a href="//t10.nuomi.com/pc/t10/index" target="_top" class="hot" mon="element=<?php echo $vo2['name']; ?>"><?php echo $vo2["name"]; ?></a></li>
+                                        <li><a href="<?php echo url('lists/index',['categoryId'=>$vo2['id']]); ?>" target="_top" class="hot" mon="element=<?php echo $vo2['name']; ?>"><?php echo $vo2["name"]; ?></a></li>
                                         <?php endforeach; endif; else: echo "" ;endif; ?>
                                     </ul>
                                 </div>
@@ -86,7 +86,7 @@
 
                 </div>
             </li>
-            <li class="nav-item"><a class="item first active">首页</a></li>
+            <li class="nav-item"><a href="<?php echo url('/'); ?>" class="item first active">首页</a></li>
             <li class="nav-item"><a class="item">个人中心</a></li>
             <li class="nav-item"><a class="item" href="<?php echo url('/bis/login'); ?>" target="_blank">商户中心</a></li>
         </ul>

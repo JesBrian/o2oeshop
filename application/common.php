@@ -75,6 +75,7 @@ function countLocation($locationIds)
     return count($arr);
 }
 
+
 /**
  * 得到商品二级城市的名字
  */
@@ -82,4 +83,18 @@ function getSeCityName($seCityId)
 {
     $seCityName = model("City")->field("name")->find($seCityId);
     return $seCityName["name"];
+}
+
+
+/**
+ * 计算商品还有多久开始出售
+ */
+function countDown($time)
+{
+    $time = $time - time();
+    if($time <=0 )
+        return "该商品已经开始出售啦！";
+    else
+        return floor($time/31536000) . "年" . floor($time%31536000/2592000) . "月" . floor($time%31536000%2592000/86400) . "天&nbsp;&nbsp;"
+            . floor($time%31536000%2592000%86400/3600) . "小时" . floor($time%31536000%2592000%86400%3600/60) . "秒";
 }

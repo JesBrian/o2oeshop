@@ -20,7 +20,7 @@ class Index extends Controller
      */
     public function test()
     {
-        //return \Map::staticImage("广东佛山禅城雾岗路4座402");
+        //return \Map::getLngLat("广东佛山禅城雾岗路4座402");
 
         //echo \phpmail\Email::send("2675862735@qq.com","666","666");
 

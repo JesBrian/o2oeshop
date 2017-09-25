@@ -102,8 +102,8 @@ class Register extends Controller
             'open_time'     =>    $data['open_time'],
             'content'       =>    empty($data['content']) ? '' : $data['content'],
             'is_main'       =>    1,    // 1 代表的是总店信息
-            'xpoint'        =>    empty($lnglat['result']['bis_location']['lng']) ? '' : $lnglat['result']['bis_location']['lng'],
-            'ypoint'        =>    empty($lnglat['result']['bis_location']['lat']) ? '' : $lnglat['result']['bis_location']['lat'],
+            'xpoint'        =>    empty($lnglat['result']['location']['lng']) ? '' : $lnglat['result']['location']['lng'],
+            'ypoint'        =>    empty($lnglat['result']['location']['lat']) ? '' : $lnglat['result']['location']['lat'],
         ];
         $locationId = model('BisLocation')->add($locationData);
 

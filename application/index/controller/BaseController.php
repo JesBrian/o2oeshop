@@ -28,6 +28,12 @@ class BaseController extends Controller
             $this->fiCategory[$k]["seCategory"] = model("Category")->getNormalSecondCategory($v["id"]);
         }
 
+        //获取控制器名动态加载CSS、js
+        $this->assign("controllerName", strtolower(request()->controller()));
+
+        //动态传递title
+        $this->assign("title","o2oeshop团购网");
+
         $this->assign("categoryData", $this->fiCategory);
     }
 

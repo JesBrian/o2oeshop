@@ -26,6 +26,9 @@ class Index extends BaseController
             }
         }
 
+        //动态传递title
+        $this->assign("title","o2oeshop团购网 主页");
+
         return $this->fetch();
     }
 }

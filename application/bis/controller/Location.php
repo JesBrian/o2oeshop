@@ -36,7 +36,7 @@ class Location extends BaseController
 
             //获取经纬度
             $lnglat = \Map::getLngLat($data["address"]);
-            if (empty($lnglat) || $lnglat["status"] != 0 || $lnglat["result"]["precise"] != 1) {
+            if (empty($lnglat) || $lnglat["status"] != 0 || $lnglat["result"]["precise"] >= 1) {
                 $this->error("无法获取地址数据，或者地址匹配不精确");
             }
 
@@ -63,9 +63,12 @@ class Location extends BaseController
                 'open_time'     =>    $data['open_time'],
                 'content'       =>    empty($data['content']) ? '' : $data['content'],
                 'is_main'       =>    0,    // 1 代表的是总店信息 0 代表分店
-                'xpoint'        =>    empty($lnglat['result']['bis_location']['lng']) ? '' : $lnglat['result']['bis_location']['lng'],
-                'ypoint'        =>    empty($lnglat['result']['bis_location']['lat']) ? '' : $lnglat['result']['bis_location']['lat'],
+                'xpoint'        =>    empty($lnglat['result']['location']['lng']) ? '' : $lnglat['result']['location']['lng'],
+                'ypoint'        =>    empty($lnglat['result']['location']['lat']) ? '' : $lnglat['result']['location']['lat'],
             ];
+            dump($lnglat);
+            dump($lnglat['result']['location']['lng']);
+            dump($locationData); exit;
             $locationId = model('BisLocation')->add($locationData);
 
             if ($locationId) {
