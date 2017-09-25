@@ -6,6 +6,6 @@ INSERT INTO o2oeshop.o2oeshop_city (name, uname, parent_id, is_default, listorde
 INSERT INTO o2oeshop.o2oeshop_city (name, uname, parent_id, is_default, listorder, status, create_time, update_time) VALUES ('抚州', 'fuzhou', 3, 0, 0, 1, 1505480146, 0);
 INSERT INTO o2oeshop.o2oeshop_city (name, uname, parent_id, is_default, listorder, status, create_time, update_time) VALUES ('景德镇', 'jingdezhen', 3, 0, 0, 1, 1505480146, 0);
 INSERT INTO o2oeshop.o2oeshop_city (name, uname, parent_id, is_default, listorder, status, create_time, update_time) VALUES ('广东', 'guangdong', 0, 0, 0, 1, 1505480183, 0);
-INSERT INTO o2oeshop.o2oeshop_city (name, uname, parent_id, is_default, listorder, status, create_time, update_time) VALUES ('佛山', 'foshan', 8, 0, 0, 1, 1505480218, 0);
+INSERT INTO o2oeshop.o2oeshop_city (name, uname, parent_id, is_default, listorder, status, create_time, update_time) VALUES ('佛山', 'foshan', 8, 1, 0, 1, 1505480218, 0);
 INSERT INTO o2oeshop.o2oeshop_city (name, uname, parent_id, is_default, listorder, status, create_time, update_time) VALUES ('广州', 'guangzhou', 8, 0, 0, 1, 1505480303, 0);
 INSERT INTO o2oeshop.o2oeshop_city (name, uname, parent_id, is_default, listorder, status, create_time, update_time) VALUES ('上海', 'shanghai', 0, 0, 0, 1, 1505480501, 0);

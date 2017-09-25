@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\index\index.html";i:1506244502;s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\head.html";i:1506237271;s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\nav.html";i:1506244639;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\index\index.html";i:1506311407;s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\head.html";i:1506309990;s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\nav.html";i:1506250898;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +21,9 @@
             <li><a><?php echo $nowCity["name"]; ?></a></li>
             <li>|</li>
             <li class="city">
-                <a>切换城市<span class="arrow-down-logo"></span></a>
+                <a>切换省份<span class="arrow-down-logo"></span></a>
                 <div class="city-drop-down">
-                    <h3>热门城市</h3>
+                    <h3>热门省份</h3>
                     <ul class="son">
                         <?php foreach($cityData as $vo): ?>
                         <li><a href="<?php echo url('index/index',['cityId'=>$vo['id']]); ?>"><?php echo $vo["name"]; ?></a></li>
@@ -58,7 +58,7 @@
                 <span class="item">全部分类</span>
                 <div class="left-menu">
 
-                    <?php if(is_array($categoryData) || $categoryData instanceof \think\Collection || $categoryData instanceof \think\Paginator): if( count($categoryData)==0 ) : echo "" ;else: foreach($categoryData as $k=>$vo1): ?>
+                    <?php if(is_array($categoryData) || $categoryData instanceof \think\Collection || $categoryData instanceof \think\Paginator): if( count($categoryData)==0 ) : echo "" ;else: foreach($categoryData as $key=>$vo1): ?>
                     <div class="level-item">
                         <div class="first-level">
                             <dl>
@@ -119,787 +119,62 @@
         <div class="content-container">
             <div class="no-recom-container">
                 <div class="floor-content-start">
-                    
+                    <?php if(is_array($categoryData) || $categoryData instanceof \think\Collection || $categoryData instanceof \think\Paginator): $i = 0;$__LIST__ = is_array($categoryData) ? array_slice($categoryData,0,4, true) : $categoryData->slice(0,4, true); if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo1): $mod = ($i % 2 );++$i;?>
                     <div class="floor-content">
                         <div class="floor-header">
-                            <h3>酒店</h3>
+                            <h3><?php echo $vo1['name']; ?></h3>
                             <ul class="reco-words">
-                                <li><a href="//t10.nuomi.com/pc/t10/index" target="_blank">精选品牌</a></li>
-                                <li><a href="//bj.nuomi.com/380" target="_blank">小吃快餐</a></li>
-                                <li><a href="//bj.nuomi.com/392" target="_blank">自助餐</a></li>
-                                <li><a href="//bj.nuomi.com/327" target="_blank">其他美食</a></li>
-                                <li><a class="no-right-border no-right-padding" target="_blank">全部<span class="all-cate-arrow"></span></a></li>
+                                <?php if(is_array($vo1['seCategory']) || $vo1['seCategory'] instanceof \think\Collection || $vo1['seCategory'] instanceof \think\Paginator): $i = 0;$__LIST__ = is_array($vo1['seCategory']) ? array_slice($vo1['seCategory'],0,4, true) : $vo1['seCategory']->slice(0,4, true); if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?>
+                                <li><a href="<?php echo url('lists/index',['categoryId'=>$vo2['id']]); ?>" target="_blank"><?php echo $vo2['name']; ?></a></li>
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
+                                <li><a href="<?php echo url('lists/index',['categoryId'=>$vo1['id']]); ?>" class="no-right-border no-right-padding" target="_blank">全部<span class="all-cate-arrow"></span></a></li>
                             </ul>
                         </div>
+
                         <ul class="itemlist eight-row-height">
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
+                            <?php if($vo1['dealData']): if(is_array($vo1['dealData']) || $vo1['dealData'] instanceof \think\Collection || $vo1['dealData'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo1['dealData'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo3): $mod = ($i % 2 );++$i;?>
+                                <li class="j-card">
+                                    <a href="<?php echo url('detail/index',['dealId'=>$vo3['id']]); ?>">
+                                        <div class="imgbox">
+                                            <ul class="marketing-label-container">
+                                                <li class="marketing-label marketing-free-appoint"></li>
+                                            </ul>
+                                            <div class="range-area">
+                                                <div class="range-bg"></div>
+                                                <div class="range-inner">
+                                                    <span class="white-locate"></span>
+                                                    <?php echo $nowCity["name"]; ?>&nbsp;&nbsp;&nbsp;<?php echo getSeCityName($vo3["se_city_id"]); ?>
+                                                </div>
+                                            </div>
+                                            <div class="borderbox">
+                                                <img src="<?php echo $vo3['image']; ?>" />
                                             </div>
                                         </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
                                     </a>
-                                    <div class="add-info"></div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
+                                    <div class="contentbox">
+                                        <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
+                                            <div class="header">
+                                                <h4 class="title "><?php echo $vo3['name']; ?></h4>
                                             </div>
+                                            <p>【<?php echo countLocation($vo3['location_ids']); ?>间分店通用】</p>
+                                        </a>
+                                        <div class="pinfo">
+                                            <span class="price"><span class="moneyico">¥</span><?php echo $vo3['current_price']; ?></span>
+                                            <span class="ori-price">价值<span class="price-line">¥<span><?php echo $vo3['origin_price']; ?></span></span></span>
                                         </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
+                                        <div class="footer">
+                                            <span class="sold">已售<span style="color:#FF4883"><?php echo $vo3['buy_count']; ?></span></span>
+                                            <div class="bottom-border"></div>
                                         </div>
                                     </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info"></div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                                <?php endforeach; endif; else: echo "" ;endif; else: ?>
+                                <span style="margin:8px 38px 48px; display:inline-block; color:#ff4883; font-size:24px; font-weight:600">该城市下没有此分类数据</span>
+                            <?php endif; ?>
                         </ul>
                     </div>
-                    <div class="floor-content">
-                        <div class="floor-header">
-                            <h3>丽人</h3>
-                            <ul class="reco-words">
-                                <li><a href="//t10.nuomi.com/pc/t10/index" target="_blank">精选品牌</a></li>
-                                <li><a href="//bj.nuomi.com/380" target="_blank">小吃快餐</a></li>
-                                <li><a href="//bj.nuomi.com/392" target="_blank">自助餐</a></li>
-                                <li><a href="//bj.nuomi.com/327" target="_blank">其他美食</a></li>
-                                <li><a class="no-right-border no-right-padding" target="_blank">全部<span class="all-cate-arrow"></span></a></li>
-                            </ul>
-                        </div>
-                        <ul class="itemlist eight-row-height">
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info"></div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info"></div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="j-card">
-                                <a>
-                                    <div class="imgbox">
-                                        <ul class="marketing-label-container">
-                                            <li class="marketing-label marketing-free-appoint"></li>
-                                        </ul>
-                                        <div class="range-area">
-                                            <div class="range-bg"></div>
-                                            <div class="range-inner">
-                                                <span class="white-locate"></span>
-                                                安贞 六里桥 丽泽桥 安定门 劲松 昌平镇 航天桥 通州区 通州北苑
-                                            </div>
-                                        </div>
-                                        <div class="borderbox">
-                                            <img src="__STATIC__/index/image/b219ebc4b74543a9c6c87b8e18178a82b80114a4.jpg" />
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="contentbox">
-                                    <a href="//www.nuomi.com/deal/ke0370si.html" target="_blank">
-                                        <div class="header">
-                                            <h4 class="title ">【6店通用】好伦哥</h4>
-                                        </div>
-                                        <p>单人自助餐！免费WiFi！</p>
-                                    </a>
-                                    <div class="add-info">
-                                        <span class="promo">立减3.6元</span>
-                                    </div>
-                                    <div class="pinfo">
-                                        <span class="price"><span class="moneyico">¥</span>52</span>
-                                        <span class="ori-price">价值<span class="price-line">¥<span>56</span></span></span>
-                                    </div>
-                                    <div class="footer">
-                                        <span class="comment">4.6分</span><span class="sold">已售337334</span>
-                                        <div class="bottom-border"></div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
+
                 </div>
             </div>
         </div>

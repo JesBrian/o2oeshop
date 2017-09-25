@@ -93,4 +93,5 @@ class Category extends Model
         ];
         return $this->where($data)->order($order)->limit(5)->select();
     }
+
 }

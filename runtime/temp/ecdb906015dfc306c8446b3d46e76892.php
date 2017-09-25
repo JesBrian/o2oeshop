@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:74:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\bis\index.html";i:1505709637;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1506162299;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1506162248;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\location\index.html";i:1505994985;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\header.html";i:1505568789;s:76:"E:\GitHub-Project\o2oeshop\public/../application/bis\view\public\footer.html";i:1505568844;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -31,46 +31,57 @@
 <meta name="keywords" content="tp5打造o2o平台系统">
 <meta name="description" content="o2o平台">
 </head>
-
-
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 商户入驻列表 </nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 商户入驻申请</nav>
 <div class="page-container">
+    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"> <a class="btn btn-primary radius"
+                                                                href="<?php echo url('location/add'); ?>"><i class="Hui-iconfont">&#xe600;</i> 添加分店</a></span>
+        <span class="r"></span></div>
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-bg table-hover table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="80">ID</th>
+                <th width="100">名称</th>
+                <th width="60">申请时间</th>
+                <th width="60">是否为总店</th>
+                <th width="60">状态</th>
+                <th width="100">操作</th>
+            </tr>
+            </thead>
+            <tbody>
 
+            <?php foreach($bisLocationData as $vo): ?>
+            <tr class="text-c">
+                <td><?php echo $vo["id"]; ?></td>
+                <td><?php echo $vo["name"]; ?></td>
+                <td><?php echo $vo["create_time"]; ?></td>
+                <td>
+                    <?php if($vo['is_main'] == 0): ?>
+                    否
+                    <?php else: ?>
+                    是
+                    <?php endif; ?>
+                </td>
+                <td class="td-status"><?php echo status($vo["status"]); ?></td>
+                <td class="td-manage">
+                    <a style="text-decoration:none" class="ml-5" onClick="o2o_s_edit('查看','<?php echo url('location/detail',['id' => $vo['id']]); ?>','1008',388)" href="javascript:;" title="查看">
+                        <i class="Hui-iconfont">&#xe6df;</i>
+                    </a>
+                    <a style="text-decoration:none" class="ml-5" onClick="" href="<?php echo url('/bis/location/status',['id'=>$vo['id'],'status'=>-1]); ?>" title="下架">
+                        <i class="Hui-iconfont">&#xe6e2;</i>
+                    </a>
+                </td>
 
-	<div class="mt-20">
-		<table class="table table-border table-bordered table-bg table-hover table-sort">
-			<thead>
-			<tr class="text-c">
-				<th width="80">ID</th>
-				<th width="100">商户名称</th>
-				<th width="30">法人</th>
-				<th width="150">联系电话</th>
-				<th width="60">申请时间</th>
-				<th width="60">状态</th>
-				<th width="100">操作</th>
-			</tr>
-			</thead>
-			<tbody>
-			<?php foreach($bisData as $vo): ?>
-			<tr class="text-c">
-				<td><?php echo $vo['id']; ?></td>
-				<td><?php echo $vo['name']; ?></td>
-				<td class="text-c"><?php echo $vo['faren']; ?></td>
-				<td class="text-c"><?php echo $vo['faren_tel']; ?></td>
-				<td><?php echo $vo['create_time']; ?></td>
-				<td class="td-status"><a href="<?php echo url('bis/status',['bisId' => $vo['id'], 'status' => $vo['status']==1?0:1]); ?>" title="点击修改状态"><?php echo status($vo['status']); ?></a></td>
-				<td class="td-manage">
-					<a style="text-decoration:none" class="ml-5" onClick="o2o_s_edit('查看','<?php echo url('bis/detail',['bisId' => $vo['id']]); ?>','1008',388)" href="javascript:;" title="查看"><i class="Hui-iconfont">&#xe6df;</i></a>
-					<a style="text-decoration:none" class="ml-5" onClick="" href="<?php echo url('bis/status',['bisId' => $vo['id'], 'status' => -1]); ?>" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
-				</td>
-			</tr>
-			<?php endforeach; ?>
-			</tbody>
-		</table>
-	</div>
-	<?php echo pagination($bisData); ?>
+            </tr>
+            <?php endforeach; ?>
+
+            </tbody>
+        </table>
+    </div>
+
+    <?php echo pagination($bisLocationData); ?>
+
 </div>
 <!--包含头部文件-->
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script>

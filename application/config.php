@@ -238,7 +238,7 @@ return [
     'paginate'               => [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
-        'list_rows' => 6,
+        'list_rows' => 10,
     ],
 
 

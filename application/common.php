@@ -64,3 +64,22 @@ function pagination($obj)
         return "<div class='cl pd-5 bg-1 bk-gray mt-20 tp5-o2o'>" . $obj->render() . "</div>";
     }
 }
+
+
+/**
+ * 计算商品支持的分店数量
+ */
+function countLocation($locationIds)
+{
+    $arr = explode("|",$locationIds);
+    return count($arr);
+}
+
+/**
+ * 得到商品二级城市的名字
+ */
+function getSeCityName($seCityId)
+{
+    $seCityName = model("City")->field("name")->find($seCityId);
+    return $seCityName["name"];
+}

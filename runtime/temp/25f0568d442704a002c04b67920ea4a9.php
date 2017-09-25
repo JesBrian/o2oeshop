@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:79:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\featured\index.html";i:1506168857;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1506162299;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1506162248;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\bis_location\index.html";i:1505998575;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\header.html";i:1506162299;s:78:"E:\GitHub-Project\o2oeshop\public/../application/admin\view\public\footer.html";i:1506162248;}*/ ?>
 <!--包含头部文件-->
 <!DOCTYPE HTML>
 <html>
@@ -35,50 +35,42 @@
 
 <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
 <body>
-<nav class="breadcrumb"></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 商户入驻列表 </nav>
 <div class="page-container">
-  <div class="text-c"> 
-  <form method="post" action="<?php echo url('featured/index'); ?>">
-      <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>选择推荐类别：</label>
-      <div class="formControls col-xs-8 col-sm-3"> <span class="select-box">
-        <select name="type" class="select">
-          <?php if(is_array($types) || $types instanceof \think\Collection || $types instanceof \think\Paginator): $i = 0; $__LIST__ = $types;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-          <option value="<?php echo $key; ?>" <?php if($key == $type): ?> selected <?php endif; ?>><?php echo $vo; ?></option>
-          <?php endforeach; endif; else: echo "" ;endif; ?>
-        </select>
-        </span>
-      </div>
 
-    <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont"></i> 搜索</button>
-  </form>
-  </div>
-  
-  <div class="mt-20">
-    <table class="table table-border table-bordered table-bg table-hover table-sort">
-      <thead>
-        <tr class="text-c">
-          <th width="40">ID</th>
-          <th width="150">标题</th>
-          <th width="100">地址</th>
-          <th width="150">新增时间</th>
-          <th width="30">发布状态</th>
-          <th width="30">操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php if(is_array($featuredData) || $featuredData instanceof \think\Collection || $featuredData instanceof \think\Paginator): $i = 0; $__LIST__ = $featuredData;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-        <tr class="text-c">
-          <td><?php echo $vo['id']; ?></td>
-          <td><a href="<?php echo $vo['url']; ?>" target="_blank"><?php echo $vo['title']; ?></a></td>
-          <td class="text-c"><?php echo $vo['url']; ?></td>
-          <td><?php echo $vo['create_time']; ?></td>
-          <td class="td-status"><a href="<?php echo url('featured/status',['id'=>$vo['id'],'status' => $vo['status']===1?0:1]); ?>" title="点击修改状态"><?php echo status($vo['status']); ?></a></td>
-          <td class="td-manage"> <a style="text-decoration:none" class="ml-5" onClick="" href="<?php echo url('featured/status',['id'=>$vo['id'],'status'=>-1]); ?>" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-        </tr>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-      </tbody>
-    </table>
-  </div>
+
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+			<tr class="text-c">
+				<th width="80">ID</th>
+				<th width="100">门店名称</th>
+				<th width="30">商户名称</th>
+				<th width="150">联系电话</th>
+				<th width="60">申请时间</th>
+				<th width="60">状态</th>
+				<th width="100">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<?php foreach($bisLocation as $vo): ?>
+			<tr class="text-c">
+				<td><?php echo $vo['id']; ?></td>
+				<td><?php echo $vo['name']; ?></td>
+				<td class="text-c"><?php echo $vo['contact']; ?></td>
+				<td class="text-c"><?php echo $vo['tel']; ?></td>
+				<td><?php echo $vo['create_time']; ?></td>
+				<td class="td-status"><a href="<?php echo url('bisLocation/status',['id' => $vo['id'], 'status' => $vo['status']==1?0:1]); ?>" title="点击修改状态"><?php echo status($vo['status']); ?></a></td>
+				<td class="td-manage">
+					<a style="text-decoration:none" class="ml-5" onClick="o2o_s_edit('查看','<?php echo url('bisLocation/detail',['id' => $vo['id']]); ?>','1008',388)" href="javascript:;" title="查看"><i class="Hui-iconfont">&#xe6df;</i></a>
+					<a style="text-decoration:none" class="ml-5" onClick="" href="<?php echo url('bisLocation/status',['bisId' => $vo['id'], 'status' => -1]); ?>" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+	<?php echo pagination($bisLocation); ?>
 </div>
 <!--包含头部文件-->
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script>

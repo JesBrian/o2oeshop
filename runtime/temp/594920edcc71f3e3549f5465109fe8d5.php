@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\user\login.html";i:1506238972;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\user\login.html";i:1506239684;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div style="width:680PX; height:380PX; background-color: #0a6999; position:absolute; background:url(__STATIC__/index/image/login-logo.png) no-repeat; background-size:100% 100%;" class="wrap"></div>
+        <div style="width:680PX; height:380PX; position:absolute; background:url(__STATIC__/index/image/login-logo.png) no-repeat; background-size:100% 100%;" class="wrap"></div>
         <div class="content">
             <div class="wrap">
                 <div class="login-logo"></div>
