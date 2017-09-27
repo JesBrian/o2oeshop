@@ -35,7 +35,7 @@ class Category extends Model
     /**
      * 获取正常二级分类的数据[不分页]
      */
-    public function getNormalSecondCategory($parent_id = 0)
+    public function getNormalSecondCategory($parent_id)
     {
         $data = [
             "status"    =>  1,

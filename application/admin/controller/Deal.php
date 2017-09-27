@@ -8,40 +8,42 @@ class Deal extends BaseController
 {
     public function index(Request $request)
     {
-        if ($request->post()) {
-            $data = $request->post();
+        $data = $request->param();
 
-            $searchData = [];
-            if (!empty($data["start_time"]) && !empty($data["end_time"]) && strtotime($data["start_time"]) < strtotime($data["end_time"])) {
-                $searchData["create_time"] = [
-                    ["gt", strtotime($data["start_time"])],
-                    ["lt", strtotime($data["end_time"])]
-                ];
-            }
-            if ($data["category_id"] != 0) {
-                $searchData["category_id"] = $data["category_id"];
-            }
-            if ($data["city_id"] != 0) {
-                $searchData["se_city_id"] = $data["city_id"];
-            }
-            if (!empty($data["name"])) {
-                $searchData["name"] = ["like", "%" . $data["name"] . "%"];
-            }
-            $searchData["status"] = ["NEQ", -1];
-            $dealData = model("Deal")->where($searchData)->paginate();
-
-            $this->assign("data", $data);
-        } else {
-            $data = [
-                "category_id"  => 0,
-                "city_id"      => 0,
-                "start_time"   => "",
-                "end_time"     => "",
-                "name"         => "",
+        $searchData = [];
+        if (!empty($data["start_time"]) && !empty($data["end_time"]) && strtotime($data["start_time"]) < strtotime($data["end_time"])) {
+            $searchData["create_time"] = [
+                ["gt", strtotime($data["start_time"])],
+                ["lt", strtotime($data["end_time"])]
             ];
-            $this->assign("data", $data);
-            $dealData = model("Deal")->where("status", "NEQ", "-1")->paginate();
+        } else {
+            $data["start_time"] = "";
+            $data["end_time"] = "";
         }
+
+        if (!empty($data["category_id"]) && $data["category_id"] != 0) {
+            $searchData["category_id"] = $data["category_id"];
+        } else {
+            $data["category_id"] = 0;
+        }
+
+        if (!empty($data["city_id"]) && $data["city_id"] != 0) {
+            $searchData["se_city_id"] = $data["city_id"];
+        } else {
+            $data["city_id"] = 0;
+        }
+
+        if (!empty($data["name"])) {
+            $searchData["name"] = ["like", "%" . $data["name"] . "%"];
+        } else {
+            $data["name"] = "";
+        }
+
+        $searchData["status"] = ["NEQ", -1];
+        $dealData = model("Deal")->where($searchData)->paginate();
+
+        $this->assign("data", $data);
+
 
         //获取分类信息
         $categoryData = model("Category")->getNormalFirstCategory();
@@ -60,42 +62,42 @@ class Deal extends BaseController
 
     public function check(Request $request)
     {
-        if ($request->post()) {
-            $data = $request->post();
+        $data = $request->param();
 
-            $searchData = [];
-            if (!empty($data["start_time"]) && !empty($data["end_time"]) && strtotime($data["start_time"]) < strtotime($data["end_time"])) {
-                $searchData["create_time"] = [
-                    ["gt", strtotime($data["start_time"])],
-                    ["lt", strtotime($data["end_time"])]
-                ];
-            }
-            if ($data["category_id"] != 0) {
-                    $searchData["category_id"] = $data["category_id"];
-            }
-            if ($data["city_id"] != 0) {
-                $searchData["se_city_id"] = $data["city_id"];
-            }
-            if (!empty($data["name"])) {
-                $searchData["name"] = ["like", "%" . $data["name"] . "%"];
-            }
-            $searchData["status"] = ["EQ", 0];
-            $dealData = model("Deal")->where($searchData)->paginate();
-
-            $this->assign("data", $data);
-
-        } else {
-            $dealData = model("Deal")->where("status", "EQ", 0)->paginate();
-
-            $data = [
-                "category_id"  => 0,
-                "city_id"      => 0,
-                "start_time"   => "",
-                "end_time"     => "",
-                "name"         => "",
+        $searchData = [];
+        if (!empty($data["start_time"]) && !empty($data["end_time"]) && strtotime($data["start_time"]) < strtotime($data["end_time"])) {
+            $searchData["create_time"] = [
+                ["gt", strtotime($data["start_time"])],
+                ["lt", strtotime($data["end_time"])]
             ];
-            $this->assign("data", $data);
+        } else {
+            $data["start_time"] = "";
+            $data["end_time"] = "";
         }
+
+        if (!empty($data["category_id"]) && $data["category_id"] != 0) {
+            $searchData["category_id"] = $data["category_id"];
+        } else {
+            $data["category_id"] = 0;
+        }
+
+        if (!empty($data["city_id"]) && $data["city_id"] != 0) {
+            $searchData["se_city_id"] = $data["city_id"];
+        } else {
+            $data["city_id"] = 0;
+        }
+
+        if (!empty($data["name"])) {
+            $searchData["name"] = ["like", "%" . $data["name"] . "%"];
+        } else {
+            $data["name"] = "";
+        }
+
+        $searchData["status"] = ["EQ",0];
+        $dealData = model("Deal")->where($searchData)->paginate();
+
+        $this->assign("data", $data);
+
 
         //获取分类信息
         $categoryData = model("Category")->getNormalFirstCategory();

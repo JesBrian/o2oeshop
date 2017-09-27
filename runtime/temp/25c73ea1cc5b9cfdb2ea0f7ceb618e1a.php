@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\index\index.html";i:1506311407;s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\head.html";i:1506322491;s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\nav.html";i:1506322779;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\index\index.html";i:1506311407;s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\head.html";i:1506426092;s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\nav.html";i:1506424104;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +9,12 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="__STATIC__/index/css/base.css" />
     <link rel="stylesheet" href="__STATIC__/index/css/common.css" />
+    <link rel="stylesheet" href="__STATIC__/admin/css/common.css" />
     <link rel="stylesheet" href="__STATIC__/index/css/<?php echo $controllerName; ?>.css" />
     <script type="text/javascript" src="__STATIC__/index/js/html5shiv.js"></script>
     <script type="text/javascript" src="__STATIC__/index/js/respond.min.js"></script>
     <script type="text/javascript" src="__STATIC__/index/js/jquery-1.11.3.min.js"></script>
+
 </head>
 <body>
 <div class="header-bar">
@@ -55,7 +57,7 @@
     <div class="nav-inner">
         <ul class="nav-list">
             <li class="nav-item">
-                <span class="item">全部分类</span>
+                <a href="<?php echo url('lists/index'); ?>" class="item">全部分类</a>
                 <div class="left-menu">
 
                     <?php if(is_array($categoryData) || $categoryData instanceof \think\Collection || $categoryData instanceof \think\Paginator): if( count($categoryData)==0 ) : echo "" ;else: foreach($categoryData as $key=>$vo1): ?>

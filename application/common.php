@@ -51,7 +51,7 @@ function doCurl($url, $type = 0, $data = [])
 
 
 /**
- * 展示通用的分页样式
+ * 展示通用的分页样式 -- 可以处理添加限制条件的参数的分页
  */
 function pagination($obj)
 {
@@ -61,7 +61,8 @@ function pagination($obj)
     }
     else
     {
-        return "<div class='cl pd-5 bg-1 bk-gray mt-20 tp5-o2o'>" . $obj->render() . "</div>";
+        $params = request()->param();
+        return "<div class='cl pd-5 bg-1 bk-gray mt-20 tp5-o2o'>" . $obj->appends($params)->render() . "</div>";
     }
 }
 
