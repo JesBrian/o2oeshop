@@ -2,10 +2,9 @@
 
 namespace app\admin\controller;
 
-use think\Controller;
 use think\Request;
 
-class Bis extends Controller
+class Bis extends BaseController
 {
     private $bisModel;
     private $bisLocationModel;

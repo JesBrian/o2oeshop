@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"E:\GitHub-Project\o2oeshop\public/../application/index\view\detail\index.html";i:1506341383;s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\head.html";i:1506426092;s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\nav.html";i:1506424104;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"E:\GitHub-Project\o2oeshop\public/../application/index\view\detail\index.html";i:1506501009;s:76:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\head.html";i:1506426092;s:75:"E:\GitHub-Project\o2oeshop\public/../application/index\view\public\nav.html";i:1506424104;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -188,7 +188,7 @@
                                         <div class="name">数&nbsp;&nbsp;&nbsp;量</div>
                                         <div class="buycount-ctrl">
                                             <a href="javascript:;" class="j-ctrl ctrl minus disabled"><span class="horizontal"></span></a>
-                                            <input type="text" value="1" maxlength="10" autocomplete="off">
+                                            <input id="buyCount" type="text" value="1" maxlength="10" autocomplete="off">
                                             <a href="javascript:;" class="ctrl j-ctrl plus "><span class="horizontal"></span><span class="vertical"></span></a>
                                         </div>
                                         <div class="text-wrap">
@@ -199,7 +199,7 @@
                                 </div>
                                 <div class="item-buy-area">
                                     <div style="float:left" class="static-hook-real static-hook-id-12">
-                                        <a href="" class="btn-buy btn-buy-qrnew j-btn-buy btn-hit">立即抢购</a>
+                                        <a class="btn-buy btn-buy-qrnew j-btn-buy btn-hit o2oeshopBuy">立即抢购</a>
                                     </div>
                                 </div>
                             </div>
@@ -376,6 +376,13 @@
         $(".branch").mouseenter(function(){
             $(".branch").removeClass("branch-open").addClass("branch-close");
             $(this).removeClass("branch-close").addClass("branch-open");
+        });
+
+
+        $(".o2oeshopBuy").click(function () {
+            var buyCount = $("#buyCount").val();
+            url = "<?php echo url('pay/index',['dealId'=>$dealData['id']]); ?>" + "?buyCount=" + buyCount;
+            window.open(url);
         });
     </script>
 </body>

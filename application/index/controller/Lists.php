@@ -45,7 +45,7 @@ class Lists extends BaseController
         {
             $seCategorys = model("Category")->where("status","EQ","1")->order(["listorder"=>"desc","id"=>"asc"])->limit(18)->select();
 
-            $dealData = model("Deal")->where("status","EQ","1")->order($orderData)->paginate(15);
+            $dealData = model("Deal")->where(["status"=>1,"end_time"=>["GT",time()]])->order($orderData)->paginate(15);
 
             $this->assign("fiCategoryId", $categoryId);
             $this->assign("seCategoryId", 0);
@@ -54,7 +54,7 @@ class Lists extends BaseController
         {
             $seCategorys = model("Category")->getNormalSecondCategory($categoryId);
 
-            $dealData = model("Deal")->where(["status"=>1,"category_id"=>$categoryId])->order($orderData)->paginate(15);
+            $dealData = model("Deal")->where(["status"=>1,"category_id"=>$categoryId,"end_time"=>["GT",time()]])->order($orderData)->paginate(15);
 
             $this->assign("fiCategoryId", $categoryId);
             $this->assign("seCategoryId", 0);
@@ -69,7 +69,7 @@ class Lists extends BaseController
             $parentId = $tempData["parent_id"];
             $seCategorys = model("Category")->getNormalSecondCategory($parentId);
 
-            $dealData = model("Deal")->where(["status"=>1,"se_category_id"=>["like","%".$categoryId."%"]])->order($orderData)->paginate(15);
+            $dealData = model("Deal")->where(["status"=>1,"se_category_id"=>["like","%".$categoryId."%"],"end_time"=>["GT",time()]])->order($orderData)->paginate(15);
 
             $this->assign("fiCategoryId", $parentId);
             $this->assign("seCategoryId", $categoryId);
