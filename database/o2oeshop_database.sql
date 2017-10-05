@@ -157,7 +157,6 @@ CREATE TABLE o2oeshop_user
   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   username VARCHAR(20) UNIQUE NOT NULL DEFAULT '',
   email VARCHAR(50) UNIQUE NOT NULL DEFAULT '',
-  mobile VARCHAR(20) NOT NULL DEFAULT '',
   password CHAR(32) NOT NULL DEFAULT '',
   code VARCHAR(10) NOT NULL DEFAULT '',
   last_login_ip VARCHAR(20) NOT NULL DEFAULT '',
@@ -167,8 +166,6 @@ CREATE TABLE o2oeshop_user
   create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
   update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0
 )ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
-
-DROP TABLE o2oeshop_featured;
 
 #推荐位表
 CREATE TABLE o2oeshop_featured
@@ -191,20 +188,17 @@ CREATE TABLE o2oeshop_order
   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   user_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
   username VARCHAR(20) NOT NULL DEFAULT '',
+  name VARCHAR(20)  NOT NULL DEFAULT '',  /*用户真实姓名*/
+  tel CHAR(13)  NOT NULL DEFAULT '',  /*用户电话号码*/
+  address VarCHAR(255)  NOT NULL DEFAULT '',  /*用户收货地址*/
+  bank_number  VARCHAR(50) NOT NULL DEFAULT '',  /*银行卡账号*/
   deal_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
-  deal_count INT(10) UNSIGNED NOT NULL DEFAULT 0,
+  deal_count INT(10) UNSIGNED NOT NULL DEFAULT 0, /*总商品数量*/
   total_price DECIMAL(20,2) NOT NULL DEFAULT 0.00, /*总支付金钱*/
-  out_trade_no VARCHAR(100) UNICODE NOT NULL DEFAULT '',  /*订单编号*/
-  payment_id TINYINT(1) NOT NULL DEFAULT 1,   /*支付方式 -- 1默认微信支付*/
-  transaction_id VARCHAR(100) NOT NULL DEFAULT '',  /*微信支付*/
-  pay_time VARCHAR(20) NOT NULL DEFAULT '',  /*支付时间*/
-  pay_status TINYINT(1) NOT NULL DEFAULT 0,  /*支付状态，0-未支付、1-支付成功、2-支付失败*/
-  pay_amount DECIMAL(20,2) NOT NULL DEFAULT 0.00,  /*微信支付返回总额*/
-  referer VARCHAR(255) NOT NULL DEFAULT '',   /*订单来自哪里？？？*/
-  status TINYINT(1) NOT NULL DEFAULT 1,    /*-1表示删除*/
+  out_trade_no CHAR(32) UNICODE NOT NULL DEFAULT '',  /*订单编号*/
+  status TINYINT(1) NOT NULL DEFAULT 1,    /* -1表示删除 */
   create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
   update_time INT(11)  UNSIGNED NOT NULL DEFAULT 0,
   key user_id(user_id),
   key create_time(create_time)
 )ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8;
-

@@ -1,0 +1,45 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<input type="hidden" id="TenantId" name="TenantId" value="" />
+<div class="header"><h1 style="text-align:center">o2oeshop管理员登录系统</h1></div>
+<div class="loginWraper">
+
+  <div id="loginform" class="loginBox">
+
+    <form class="form form-horizontal" action="{:url('login/login')}" method="post">
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+        <div class="formControls col-xs-8">
+          <input id="" name="adminname" type="text" placeholder="账户" class="input-text size-L">
+        </div>
+      </div>
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+        <div class="formControls col-xs-8">
+          <input id="" name="password" type="password" placeholder="密码" class="input-text size-L">
+        </div>
+      </div>
+
+      <div class="row cl">
+        <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+        <div class="formControls col-xs-8">
+          <div><img src="{:captcha_src()}" alt="captcha" onclick="this.src=this.src+'?'" /></div>
+          <input id="" name="captcha" type="captcha" placeholder="验证码" class="input-text size-L">
+        </div>
+      </div>
+
+      
+      <div class="row cl">
+
+        <div class="formControls col-xs-8 col-xs-offset-3">
+
+          <input name="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="footer">Copyright tp5打造本地生活服务系统</div>
+<!--包含尾部文件-->
+{include file="public/footer" /}
